@@ -22,9 +22,9 @@ namespace WebAdvert.SearchApi.Services
         public async Task<List<AdvertType>> Search(string keyword)
         {
             var searchResponse = await _client.SearchAsync<AdvertType>(search => search.
-                Query(query => query.
-                    Term(field => field.Title, keyword.ToLower())
-                )).ConfigureAwait(false);
+                Query(query => 
+                    query.Term(field => field.Title, keyword.ToLower())))
+                .ConfigureAwait(false);
 
             return searchResponse.Hits.Select(hit => hit.Source).ToList();
         }
