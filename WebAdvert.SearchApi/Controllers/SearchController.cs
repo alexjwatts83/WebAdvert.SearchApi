@@ -32,7 +32,7 @@ namespace WebAdvert.SearchApi.Controllers
         [Route("{keyword}")]
         public async Task<List<AdvertType>> Get(string keyword)
         {
-            //_logger.LogInformation("Search method was called");
+            _logger.LogInformation($"Search method was called with keyword: '{keyword}'");
             return await _searchService.Search(keyword).ConfigureAwait(false);
         }
     }
